@@ -8,7 +8,7 @@ edition = "2021"
 [dependencies]
 
 [target.'cfg(target_os = "windows")'.dependencies]
-windows = {version = "0.43.0", features =["Devices_Power", "Win32_Foundation", "Win32_System_Power", "Win32_System_Com", "Foundation"]}
+windows = {version = "0.43.0", features =["Devices_Power", "Win32_Foundation", "Win32_System_Power", "Win32_System_Com", "Foundation", "System_Power"]}
 
 [target.'cfg(any(target_os = "macos"))'.dependencies]
 libc = "^0.2"
