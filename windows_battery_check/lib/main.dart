@@ -40,16 +40,49 @@ class HomePage extends StatelessWidget {
         title: Text("Flutter Battery Windows"),
       ),
       body: Center(
-        child: FutureBuilder(
-          future: api.helloWorld(),
-          builder: (context, data) {
-            if (data.hasData) {
-              return Text(data.data!);
-            }
-            return Center(
-              child: CircularProgressIndicator(),
-            );
-          },
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            FutureBuilder(
+              future: api.getBatteryStatus(),
+              builder: (context, data) {
+                return Text(
+                  'System has battery present: ${data.data}',
+                  style: TextStyle(
+                      color: (data.data ?? false) ? Colors.green : Colors.red),
+                );
+              },
+            ),
+            StreamBuilder(
+              stream: api.batteryEventStream(),
+              builder: (context, data) {
+                if (data.hasData) {
+                  return Column(
+                    children: [
+                      Text(
+                          "Charge rate in milliwatts: ${data.data!.chargeRatesInMilliwatts.toString()}"),
+                      Text(
+                          "Design capacity in milliwatts: ${data.data!.designCapacityInMilliwattHours.toString()}"),
+                      Text(
+                          "Full charge in milliwatt hours: ${data.data!.fullChargeCapacityInMilliwattHours.toString()}"),
+                      Text(
+                          "Remaining capacity in milliwatts: ${data.data!.remainingCapacityInMilliwattHours}"),
+                      Text("Battery status is ${data.data!.status}")
+                    ],
+                  );
+                }
+                return Column(
+                  children: [
+                    Text("Waiting for a battery event."),
+                    Text(
+                        "If you have a desktop computer with no battery, this event will never come..."),
+                    CircularProgressIndicator(),
+                  ],
+                );
+              },
+            ),
+          ],
         ),
       ),
     );

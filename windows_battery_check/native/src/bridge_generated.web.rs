@@ -2,8 +2,13 @@ use super::*;
 // Section: wire functions
 
 #[wasm_bindgen]
-pub fn wire_helloWorld(port_: MessagePort) {
-    wire_helloWorld_impl(port_)
+pub fn wire_battery_event_stream(port_: MessagePort) {
+    wire_battery_event_stream_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_getBatteryStatus(port_: MessagePort) {
+    wire_getBatteryStatus_impl(port_)
 }
 
 // Section: allocate functions

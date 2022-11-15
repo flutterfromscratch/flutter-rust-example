@@ -2,8 +2,13 @@ use super::*;
 // Section: wire functions
 
 #[no_mangle]
-pub extern "C" fn wire_helloWorld(port_: i64) {
-    wire_helloWorld_impl(port_)
+pub extern "C" fn wire_battery_event_stream(port_: i64) {
+    wire_battery_event_stream_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_getBatteryStatus(port_: i64) {
+    wire_getBatteryStatus_impl(port_)
 }
 
 // Section: allocate functions

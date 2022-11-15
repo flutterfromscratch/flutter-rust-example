@@ -55,19 +55,33 @@ class NativeWire implements FlutterRustBridgeWireBase {
   late final _store_dart_post_cobject = _store_dart_post_cobjectPtr
       .asFunction<void Function(DartPostCObjectFnType)>();
 
-  void wire_helloWorld(
+  void wire_battery_event_stream(
     int port_,
   ) {
-    return _wire_helloWorld(
+    return _wire_battery_event_stream(
       port_,
     );
   }
 
-  late final _wire_helloWorldPtr =
+  late final _wire_battery_event_streamPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
-          'wire_helloWorld');
-  late final _wire_helloWorld =
-      _wire_helloWorldPtr.asFunction<void Function(int)>();
+          'wire_battery_event_stream');
+  late final _wire_battery_event_stream =
+      _wire_battery_event_streamPtr.asFunction<void Function(int)>();
+
+  void wire_getBatteryStatus(
+    int port_,
+  ) {
+    return _wire_getBatteryStatus(
+      port_,
+    );
+  }
+
+  late final _wire_getBatteryStatusPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_getBatteryStatus');
+  late final _wire_getBatteryStatus =
+      _wire_getBatteryStatusPtr.asFunction<void Function(int)>();
 
   void free_WireSyncReturnStruct(
     WireSyncReturnStruct val,
