@@ -11,6 +11,11 @@ pub extern "C" fn wire_getBatteryStatus(port_: i64) {
     wire_getBatteryStatus_impl(port_)
 }
 
+#[no_mangle]
+pub extern "C" fn wire_init(port_: i64) {
+    wire_init_impl(port_)
+}
+
 // Section: allocate functions
 
 // Section: impl Wire2Api

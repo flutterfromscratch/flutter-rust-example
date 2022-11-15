@@ -49,6 +49,21 @@ class NativeImpl implements Native {
         argNames: [],
       );
 
+  Future<void> init({dynamic hint}) =>
+      _platform.executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => _platform.inner.wire_init(port_),
+        parseSuccessData: _wire2api_unit,
+        constMeta: kInitConstMeta,
+        argValues: [],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta get kInitConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
+        debugName: "init",
+        argNames: [],
+      );
+
 // Section: wire2api
 
   BatteryUpdate _wire2api_battery_update(dynamic raw) {
@@ -82,6 +97,10 @@ class NativeImpl implements Native {
 
   int? _wire2api_opt_box_autoadd_i32(dynamic raw) {
     return raw == null ? null : _wire2api_box_autoadd_i32(raw);
+  }
+
+  void _wire2api_unit(dynamic raw) {
+    return;
   }
 }
 

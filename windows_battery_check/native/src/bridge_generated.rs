@@ -39,6 +39,16 @@ fn wire_getBatteryStatus_impl(port_: MessagePort) {
         move || move |task_callback| getBatteryStatus(),
     )
 }
+fn wire_init_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "init",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| Ok(init()),
+    )
+}
 // Section: wrapper structs
 
 // Section: static checks

@@ -14,6 +14,10 @@ abstract class Native {
   Future<bool> getBatteryStatus({dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kGetBatteryStatusConstMeta;
+
+  Future<void> init({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kInitConstMeta;
 }
 
 class BatteryUpdate {

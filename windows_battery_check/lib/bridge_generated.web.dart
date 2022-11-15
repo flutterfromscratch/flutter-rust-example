@@ -33,6 +33,8 @@ class NativeWasmModule implements WasmModule {
   external void wire_battery_event_stream(NativePortType port_);
 
   external void wire_getBatteryStatus(NativePortType port_);
+
+  external void wire_init(NativePortType port_);
 }
 
 // Section: WASM wire connector
@@ -46,4 +48,6 @@ class NativeWire extends FlutterRustBridgeWasmWireBase<NativeWasmModule> {
 
   void wire_getBatteryStatus(NativePortType port_) =>
       wasmModule.wire_getBatteryStatus(port_);
+
+  void wire_init(NativePortType port_) => wasmModule.wire_init(port_);
 }
